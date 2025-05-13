@@ -11,3 +11,5 @@ export const formSchema = z.object({
     notes: z.string(),
     userId: z.string(),
   })
+
+  export type FormSchemaType = z.infer<typeof formSchema>;

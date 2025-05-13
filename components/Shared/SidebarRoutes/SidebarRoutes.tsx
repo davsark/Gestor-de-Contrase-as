@@ -11,7 +11,7 @@ import { SingleItem } from "../SingleItem";
 import { dataSidebarConfiguration, dataSidebarElements } from "./SidebarRoutes.data";
   export function SidebarRoutes(){
     return <div>
-        <SingleItem href="/" label="Homepage" icon={House} />
+        <SingleItem href="/" label="Página principal" icon={House} />
         {dataSidebarElements.map(({title, icon:Icon, children})=>(
             <Accordion 
             type="single" 
@@ -47,7 +47,7 @@ import { dataSidebarConfiguration, dataSidebarElements } from "./SidebarRoutes.d
 
         <SingleItem
             href="/generator"
-            label="Generator"
+            label="Generador de contraseñas"
             icon={RectangleEllipsis} 
         />
 
@@ -84,12 +84,12 @@ import { dataSidebarConfiguration, dataSidebarElements } from "./SidebarRoutes.d
         </Accordion>
         ))}
          <SingleItem 
-        href="/analitic" label="Analytics" icon={BarChart}
+        href="/analitic" label="Análisis" icon={BarChart}
         />
         <SingleItem
-        onClick={() => console.log ("Close session")}
+        onClick={() => console.log ("Cerrar sesión")}
         href="#"
-        label="Close sesion"
+        label="Cerrar sesión"
         icon={DoorClosed}
         />
     </div> 

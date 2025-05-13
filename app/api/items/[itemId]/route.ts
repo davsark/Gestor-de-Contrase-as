@@ -5,7 +5,7 @@ export async function PATCH(req: Request, {params}: {params: {itemId: string} }
 
 ) {
     try {
-        const {itemId} = params;
+        const {itemId} =  await params;
         const values = await req.json();
 
         if (!itemId) {

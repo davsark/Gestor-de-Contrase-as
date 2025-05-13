@@ -10,21 +10,21 @@ import {
 } from "lucide-react";
 export const dataSidebarElements = [
     {
-        title: "Elements",
+        title: "Elementos",
         icon: LayoutList,
         children: [
             {
-                item: "Favourites",
+                item: "Favoritos",
                 href: "/favourites",
                 icon: Star,
             },
             {
-                item: "Logins",
+                item: "Inicios de sesión",
                 href: "/logins-elements",
                 icon: Earth,
             },
             {
-                item: "Credit Card",
+                item: "Tarjetas de crédito",
                 href: "/credit-card",
                 icon: CreditCard,
             }
@@ -34,23 +34,23 @@ export const dataSidebarElements = [
 
 export const dataSidebarConfiguration = [
     {
-        title: "Configuration",
+        title: "Configuración",
         icon: Settings,
         children: [
             {
-                item: "Profile",
+                item: "Perfil",
                 href: "/profile",
                 icon: UserPen,
                 premium: false,
             },
             {
-                item: "Security",
+                item: "Seguridad",
                 href: "#",
                 icon: Lock,
                 premium: true,
             },
             {
-                item: "Suscription",
+                item: "Suscripción",
                 href: "#",
                 icon: Landmark,
                 premium: true,

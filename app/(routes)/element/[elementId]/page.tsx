@@ -11,9 +11,11 @@ export default async function ElementPage({params}: {
   if (!session || !session.user?.email) {
     return redirect("/")
   }
+  const { elementId } = await params; // ✅ Aquí se hace await a params
+
   const element = await db.element.findUnique({
     where: {
-      id: params.elementId,
+      id: elementId, // ✅ Ahora usamos elementId directamente
     },
   });
   if (!element) {

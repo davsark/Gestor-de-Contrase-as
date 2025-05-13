@@ -2,8 +2,7 @@
 import { FormEditElementProps } from "./FormEditElement.types";
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { Resolver, useForm , SubmitHandler} from "react-hook-form"
 import { Earth, Eye, Shuffle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -28,47 +27,55 @@ import { copyClipboard } from "@/lib/copyClipboard"
 import { useState } from "react"
 import { generatePassword } from "@/lib/generatePassword"
 import { Textarea } from "@/components/ui/textarea"
-import { db } from "@/lib/db"
+
 import {useToast} from "@/components/ui/use-toast"
 import axios from "axios"
 import {useRouter} from "next/navigation"
-import { formSchema } from "./FormEditElement.form";
+import { formSchema, FormSchemaType,} from "./FormEditElement.form";
 
 export  function FormEditElement(props: FormEditElementProps) {
     const {dataElement} = props;
     const [ showPassword, setShowPassword] = useState(false)
     const {toast} = useToast();
     const router = useRouter();
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema) as any,
-        defaultValues: {
-          typeElement: dataElement.typeElement,
-          isFavourite: dataElement.isFavourite,
-          name: dataElement?.name || "",
-          directory: dataElement?.directory || "",
-          username: dataElement?.username || "",
-          password: dataElement?.password || "",
-          urlWebsite: dataElement?.urlWebsite || "",
-          notes: dataElement?.notes || "",
-          userId: dataElement.userId,
-        },
-      })
+    const form = useForm({
+      resolver: zodResolver(formSchema) as unknown as Resolver<{
+        name: string;
+        typeElement: string;
+        isFavourite: boolean;
+        urlWebsite: string;
+        username: string;
+        password: string;
+        notes: string;
+        userId: string;
+        directory: string;
+      }>,
+      defaultValues: {
+        typeElement: dataElement.typeElement,
+        isFavourite: dataElement.isFavourite ?? false,
+        name: dataElement.name || "",
+        directory: dataElement.directory || "",
+        username: dataElement.username || "",
+        password: dataElement.password || "",
+        urlWebsite: dataElement.urlWebsite || "",
+        notes: dataElement.notes || "",
+        userId: dataElement.userId,
+      },
+    });
   
      
       // 2. Define a submit handler.
-      const onSubmit = async (values: z.infer<typeof formSchema>) => {
+      const onSubmit: SubmitHandler<FormSchemaType> = async (values) => {
         try {
-            await axios.patch(`/api/items/${dataElement.id}`, values)
-            toast({title: "Elemento modificado correctamente ✌️"})
-        
-  
-         router.push("/");
-          
-        }catch (error){
+          await axios.patch(`/api/items/${dataElement.id}`, values);
+          toast({ title: "Elemento modificado correctamente ✌️" });
+          router.push("/");
+        } catch (error) {
+          console.log(error);
           toast({
             title: "Algo ha fallado",
             variant: "destructive",
-          })
+          });
         }
       };
       const generateRandomPassword = () => {
