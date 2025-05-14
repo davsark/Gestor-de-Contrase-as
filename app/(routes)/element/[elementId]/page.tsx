@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 
-// Definir el tipo manualmente
+// Definimos el tipo correctamente para las props
 interface ElementPageProps {
   params: {
     elementId: string;
@@ -18,7 +18,7 @@ export default async function ElementPage({ params }: ElementPageProps) {
     return redirect("/");
   }
 
-  const { elementId } = params;
+  const { elementId } = params;  // Aquí no necesitamos await
 
   const element = await db.element.findUnique({
     where: {
@@ -27,7 +27,7 @@ export default async function ElementPage({ params }: ElementPageProps) {
   });
 
   if (!element) {
-    redirect("/");
+    return redirect("/"); // Necesitamos un return para hacer un redireccionamiento correcto
   }
 
   return (
