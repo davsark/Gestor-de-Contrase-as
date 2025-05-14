@@ -9,6 +9,7 @@ import {
   import Link from "next/link";
 import { SingleItem } from "../SingleItem";
 import { dataSidebarConfiguration, dataSidebarElements } from "./SidebarRoutes.data";
+import { signOut } from "next-auth/react";
   export function SidebarRoutes(){
     return <div>
         <SingleItem href="/" label="Página principal" icon={House} />
@@ -87,7 +88,7 @@ import { dataSidebarConfiguration, dataSidebarElements } from "./SidebarRoutes.d
         href="/analitic" label="Análisis" icon={BarChart}
         />
         <SingleItem
-        onClick={() => console.log ("Cerrar sesión")}
+        onClick={() => signOut()}
         href="#"
         label="Cerrar sesión"
         icon={DoorClosed}

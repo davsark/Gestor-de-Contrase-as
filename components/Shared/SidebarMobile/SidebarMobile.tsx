@@ -14,7 +14,7 @@ import { SidebarRoutes } from "../SidebarRoutes/SidebarRoutes";
 export  function SidebarMobile() {
   return (
     <Sheet>
-  <SheetTrigger asChild>
+  <SheetTrigger className="bg-purple-500 text-white" asChild>
     <button>
         <Menu/>
     </button>

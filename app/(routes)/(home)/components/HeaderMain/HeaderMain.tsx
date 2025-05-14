@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button"
 import {
     Dialog,
     DialogContent,
-    /*DialogDescription,*/
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -11,9 +10,7 @@ import {
 import {
     DropdownMenu,
     DropdownMenuContent,
-    /*DropdownMenuItem,*/
     DropdownMenuLabel,
-    /*DropdownMenuSeparator,*/
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
 import { ChevronDown } from "lucide-react"
@@ -34,12 +31,12 @@ export  function HeaderMain(props: HeaderMainProps) {
     return (
     <div className="flex justify-between items-center">
         <h1 className="text-xl md:text-3xl font-semibold">
-         Todas las cajas fuertes    
+         Todas las contraseñas    
         </h1>
     <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <DropdownMenu open={openDropdown} onOpenChange={setOpenDropdown}>
             <DropdownMenuTrigger asChild>
-                <Button>
+                <Button className="bg-purple-500 text-white">
                     Nueva <ChevronDown />
                 </Button>
             </DropdownMenuTrigger>
