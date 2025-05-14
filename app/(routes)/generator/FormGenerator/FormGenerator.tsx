@@ -9,6 +9,7 @@ import { copyClipboard } from "@/lib/copyClipboard";
 import { PasswordGenerator } from "./PasswordGenerator";
 import { UserGenerator } from "../UserGenerator";
 import { generateCustomPassword } from "@/lib/generateCustomPassword";
+import { generateRandomUsername } from "@/lib/generateRandomUser";
 
 export default function FormGenerator(){
     const [ itemValueInput, setItemValueInput] = useState("");
@@ -42,6 +43,14 @@ export default function FormGenerator(){
     selectedValue
    ]);
 
+   useEffect(() => {
+    if(selectedValue === "user"){
+        const newUserGenerated = generateRandomUsername();
+        setItemValueInput(newUserGenerated);
+    }
+
+   },[userTypeSelected, selectedValue]);
+
 
    const handleShuffleClick = () => {
     if(selectedValue === "password"){
@@ -51,9 +60,16 @@ export default function FormGenerator(){
             isMinusSelected,
             isNumbersSelected,
             isSpecialCharacters
-        )
+        );
         setItemValueInput(password);
+    }else if(selectedValue === "user"){
+        if(userTypeSelected === "email"){
+            console.log("Email");
+    }else {
+        const username = generateRandomUsername();
+        setItemValueInput(username);
     }
+   }
 }
 
     return (
