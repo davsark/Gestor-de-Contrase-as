@@ -6,9 +6,7 @@ import React from "react";
 
 // Definimos el tipo correctamente para las props
 interface ElementPageProps {
-  params: {
-    elementId: string;
-  };
+  params: Promise<{ elementId: string }>;
 }
 
 export default async function ElementPage({ params }: ElementPageProps) {
@@ -18,7 +16,7 @@ export default async function ElementPage({ params }: ElementPageProps) {
     return redirect("/");
   }
 
-  const { elementId } = params;  // Aquí no necesitamos await
+  const { elementId } = await params;
 
   const element = await db.element.findUnique({
     where: {
