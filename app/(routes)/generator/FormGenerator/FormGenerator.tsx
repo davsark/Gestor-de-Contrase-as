@@ -10,6 +10,7 @@ import { PasswordGenerator } from "./PasswordGenerator";
 import { UserGenerator } from "../UserGenerator";
 import { generateCustomPassword } from "@/lib/generateCustomPassword";
 import { generateRandomUsername } from "@/lib/generateRandomUser";
+import { generateRandomEmail } from "@/lib/generateRandomEmail";
 
 export default function FormGenerator(){
     const [ itemValueInput, setItemValueInput] = useState("");
@@ -48,6 +49,10 @@ export default function FormGenerator(){
         const newUserGenerated = generateRandomUsername();
         setItemValueInput(newUserGenerated);
     }
+    if (userTypeSelected === 'email'){
+        const newEmailGenerated = generateRandomEmail()
+        setItemValueInput(newEmailGenerated);
+    }
 
    },[userTypeSelected, selectedValue]);
 
@@ -64,11 +69,12 @@ export default function FormGenerator(){
         setItemValueInput(password);
     }else if(selectedValue === "user"){
         if(userTypeSelected === "email"){
-            console.log("Email");
-    }else {
-        const username = generateRandomUsername();
-        setItemValueInput(username);
-    }
+            const email = generateRandomEmail();
+            setItemValueInput(email);
+        }else {
+            const username = generateRandomUsername();
+            setItemValueInput(username);
+        }
    }
 }
 
