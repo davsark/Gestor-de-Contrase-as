@@ -18,10 +18,18 @@
         "name": "next"
       }
     ],
+    "types": ["next", "next/types/global"],
     "paths": {
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "pages/**/*.tsx",
+    "app/**/*.tsx"
+  ],
   "exclude": ["node_modules"]
 }

@@ -4,13 +4,14 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 
-type PageProps = {
+// Definir el tipo manualmente
+interface ElementPageProps {
   params: {
     elementId: string;
   };
-};
+}
 
-export default async function ElementPage({ params }: PageProps) {
+export default async function ElementPage({ params }: ElementPageProps) {
   const session = await getServerSession();
 
   if (!session || !session.user?.email) {
