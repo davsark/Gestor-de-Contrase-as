@@ -4,29 +4,37 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 
-export default async function ElementPage({params}: {
-    params: {elementId: string};
-}){
-  const session = await getServerSession()
+type PageProps = {
+  params: {
+    elementId: string;
+  };
+};
+
+export default async function ElementPage({ params }: PageProps) {
+  const session = await getServerSession();
+
   if (!session || !session.user?.email) {
-    return redirect("/")
+    return redirect("/");
   }
-  const { elementId } = params; // ✅ Aquí se hace await a params
+
+  const { elementId } = params;
 
   const element = await db.element.findUnique({
     where: {
-      id: elementId, // ✅ Ahora usamos elementId directamente
+      id: elementId,
     },
   });
+
   if (!element) {
-    redirect("/")
+    redirect("/");
   }
-    return (
-        <div>
-            <h1>Element Page</h1>
-            <div>
-           <FormEditElement dataElement={element}/>
-            </div>
-        </div>
-    )
+
+  return (
+    <div>
+      <h1>Element Page</h1>
+      <div>
+        <FormEditElement dataElement={element} />
+      </div>
+    </div>
+  );
 }
