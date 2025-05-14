@@ -4,9 +4,11 @@ import { Copy, Shuffle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { copyClipboard } from "@/lib/copyClipboard";
 import { PasswordGenerator } from "./PasswordGenerator";
+import { UserGenerator } from "../UserGenerator";
+import { generateCustomPassword } from "@/lib/generateCustomPassword";
 
 export default function FormGenerator(){
     const [ itemValueInput, setItemValueInput] = useState("");
@@ -20,6 +22,40 @@ export default function FormGenerator(){
    const [isNumbersSelected, setIsNumbersSelected] = useState(true);
    const [isSpecialCharacters, setIsSpecialCharacters] = useState(true);
 
+   useEffect(() => {
+    if(selectedValue === "password"){
+        const newPassword = generateCustomPassword(
+            lengthPassword,
+            isMayusSelected,
+            isMinusSelected,
+            isNumbersSelected,
+            isSpecialCharacters
+        );
+        setItemValueInput(newPassword);
+    }
+   }, [
+    lengthPassword,
+    isMayusSelected,
+    isMinusSelected,
+    isNumbersSelected,
+    isSpecialCharacters,
+    selectedValue
+   ]);
+
+
+   const handleShuffleClick = () => {
+    if(selectedValue === "password"){
+        const password = generateCustomPassword(
+            lengthPassword,
+            isMayusSelected,
+            isMinusSelected,
+            isNumbersSelected,
+            isSpecialCharacters
+        )
+        setItemValueInput(password);
+    }
+}
+
     return (
         <div className="mt-5 max-w-2xl ">
             <div className="relative w-full">
@@ -31,7 +67,8 @@ export default function FormGenerator(){
                 <Copy className="absolute top-3 right-12 cursor-pointer h-5 w-5"
                 onClick={() => copyClipboard(itemValueInput)}
                 />
-                <Shuffle className="absolute top-3 right-3 cursor-pointer h-5 w-5"/>
+                
+                <Shuffle className="absolute top-3 right-3 cursor-pointer h-5 w-5" onClick={handleShuffleClick}/>
                
             </div>
             <div className="bg-slate-100 rounded-md shadow-md my-4 p-4">
@@ -66,7 +103,7 @@ export default function FormGenerator(){
                 setIsSpecialCharacters={setIsSpecialCharacters}
                />
             ) : (
-                <p>Form User</p>
+                <UserGenerator setUserTypeSelected={setUserTypeSelected}/>
             )}
         </div>
     )
