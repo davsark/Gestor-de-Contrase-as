@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Gestor de Contraseñas y Tarjetas - README
+Bienvenido/a a mi proyecto: Gestor de Contraseñas y Tarjetas de Crédito, una aplicación web desarrollada con Next.js y React pensada para ayudarte a almacenar de forma segura tus contraseñas, datos de tarjetas y generar credenciales aleatorias robustas para tus servicios digitales.
 
-## Getting Started
+🚀 Funcionalidades principales
+Gestión segura de contraseñas: Guarda, edita y elimina contraseñas de múltiples servicios en un solo lugar.
 
-First, run the development server:
+Gestión de tarjetas de crédito: Almacena y organiza la información de tus tarjetas de forma cifrada.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Generador de usuarios y contraseñas aleatorias: Crea credenciales seguras y únicas con solo un clic, personalizando longitud y complejidad.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Interfaz intuitiva: Navegación sencilla y diseño enfocado en la experiencia de usuario.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Privacidad y seguridad: Tus datos se almacenan de manera cifrada y solo tú puedes acceder a ellos.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🛠️ Tecnologías utilizadas
+Next.js - Framework React para aplicaciones web modernas.
 
-## Learn More
+React - Librería principal para la interfaz de usuario.
 
-To learn more about Next.js, take a look at the following resources:
+TypeScript - Tipado estático para mayor robustez y menos errores en tiempo de ejecución.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Base de datos local/remota - Almacenamiento seguro de la información.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📦 Instalación y uso
+Clona este repositorio.
 
-## Deploy on Vercel
+Instala las dependencias con npm install.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Ejecuta la app en desarrollo con npm run dev.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Accede a la app desde tu navegador en http://localhost:3000.
+
+💡 Sobre la seguridad
+Este gestor está diseñado para proteger tu información sensible. Aun así, recuerda:
+
+Utilizar contraseñas maestras robustas.
+
+No compartir tus credenciales con terceros.
+
+Mantener tu navegador y sistema operativo actualizados.
+
+🤝 Contribuciones
+¿Quieres mejorar la app? ¡Las contribuciones son bienvenidas! Abre un issue o haz un pull request.
+
+📄 Licencia
+Este proyecto está bajo licencia MIT.
+
+¡Gracias por usar el Gestor de Contraseñas y Tarjetas! Tu seguridad digital es lo primero.
